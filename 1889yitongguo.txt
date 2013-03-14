@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    long n, t, s, count;
+
+    while ( scanf( "%ld", &n ) != EOF )
+    {
+        t = count = 1;
+        while(1)
+        {
+            s = t % n;
+            
+            if ( s == 0 )
+            {
+                printf("%ld\n", count);
+                break;
+            }
+
+            else 
+            {
+                t = s * 10 + 1;
+                count++;
+            }
+        }
+    }
+
+    return 0;
+}

@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <math.h>
+#include <string.h>
+#include <iostream.h>
+int main()
+{
+    char s[1001];
+    int t=0;
+    int n[1001],k,i,j,m[1001];
+    while( cin >> s)
+    {
+        t++;
+        k=strlen(s);
+        printf("AB Circle #%d:\n",t);
+        for(i=0;i<k;i++)
+        {
+            m[i]=0;
+            n[i]=0;
+        }
+        if(s[0]=='a')m[0]=1;
+        else n[0]=1;
+        for(i=1;i<k;i++)
+        {
+            if(s[i]=='a')m[i]=m[i-1]+1;
+            else m[i]=m[i-1];
+            if(s[i]=='b')n[i]=n[i-1]+1;
+            else n[i]=n[i-1];
+
+            
+        }
+        for(i=0;i<(k-1);i++)
+        {
+            for(j=i+1;j<k;j++)
+            {
+                if( m[j]-m[i]==n[k-1]+n[i]-n[j]) printf("%d,%d\n",i,j);
+                else if( n[j]-n[i]==m[k-1]+m[i]-m[j]) printf("%d,%d\n",i,j);
+            }
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+        
+        
+

@@ -1,0 +1,45 @@
+回复 全回 转寄 删除 上一封 下一封 返回 
+ 
+发件人： "" <05jzgjzwj@st.zju.edu.cn> 存入地址簿 阻止发信人 加入过滤器 
+收件人： 05jzgjzwj@st.zju.edu.cn 
+抄送：  
+邮件主题： 1029 
+发件日期： Sun, 22 Apr 2007 11:06:52 +0800 看信件原文   打印信件 
+ 
+来信内容: 选择内码:from:GBKGB2312BIG-5UTF-8  to:GBKBIG-5UTF-8
+ 
+ 
+
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+   int T, N, s, t, corridor[2001];
+   cin >> T;
+   for( int i=0; i<T; i++)
+   {
+      memset(corridor, 0, 2001*sizeof(int));
+      cin>>N;
+      int max=0;
+      for(int k=1;k<=N;k++)
+      {
+        cin>>s>>t;
+        if(t>max)max=t;
+        if(s>t){int temp;temp=s;s=t;t=temp;}
+            if(s%2==0)s-=1;
+            if(t%2==1)t+=1;
+            for(int j=s;j<=t;j++)
+            corridor[j]++;
+
+      }
+      int m=0;
+      for(int j=1;j<=max;j++)
+      if(corridor[j]>m)m=corridor[j];
+      cout<<m*10<<endl;
+   }
+}
+
+ 

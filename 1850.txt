@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+main(){
+   int i,j,k,m,n,mm,jj;
+  
+   while (2 == scanf("%d%d\n",&n,&m)) {
+      mm = m;
+      j = 1 + sqrt((double)m);
+      for (i=2;i<j;i++){
+         if (m % i == 0) {
+            for (jj=0;m%i==0;jj++) {m /= i;}
+            j = 1 + sqrt((double)m);
+            for (k=i;k <= n;k*=i) {
+               jj -= n / k;
+            }
+            if (jj > 0) {
+               printf("%d does not divide %d!\n",mm,n);
+               goto done;
+            }
+         }
+      }
+      if (m > n || m == 0) {
+         printf("%d does not divide %d!\n",mm,n);
+      }else{
+         printf("%d divides %d!\n",mm,n);
+      }
+   done:;
+   }
+}

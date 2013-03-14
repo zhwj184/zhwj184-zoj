@@ -1,0 +1,32 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: 2547 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ZHONGW~1\LOCALS~1\Temp\RSP17.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/2547.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\ACM已AC\AC\2547.cpp"
+]
+Creating command line "G:\编程工具\Codeplay\vectorcl.exe @C:\DOCUME~1\ZHONGW~1\LOCALS~1\Temp\RSP17.tmp" 
+Creating temporary file "C:\DOCUME~1\ZHONGW~1\LOCALS~1\Temp\RSP18.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/2547.pdb" /debug /machine:I386 /out:"Debug/2547.exe" /pdbtype:sept 
+".\Debug\2547.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\ZHONGW~1\LOCALS~1\Temp\RSP18.tmp"
+<h3>Output Window</h3>
+Compiling...
+2547.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+2547.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

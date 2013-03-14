@@ -1,0 +1,138 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+char Translatechar(char c)
+{
+ switch(c)
+ {
+  case '1': return '`';
+  case '2': return '1';
+  case '3': return '2';
+  case '4': return '3';
+  case '5': return '4';
+  case '6': return '5';
+  case '7': return '6';
+  case '8': return '7';
+  case '9': return '8';
+  case '0': return '9';
+  case '-': return '0';
+  case '=': return '-';
+  case 'W': return 'Q';
+  case 'E': return 'W';
+  case 'R': return 'E';
+  case 'T': return 'R';
+  case 'Y': return 'T';
+  case 'U': return 'Y';
+  case 'I': return 'U';
+  case 'O': return 'I';
+  case 'P': return 'O';
+  case '[': return 'P';
+  case ']': return '[';
+  case '\': return ']';
+  case 'S': return 'A';
+  case 'D': return 'S';
+  case 'F': return 'D';
+  case 'G': return 'F';
+  case 'H': return 'G';
+  case 'J': return 'H';
+  case 'K': return 'J';
+  case 'L': return 'K';
+  case ';': return 'L';
+  case '\'': return ';';
+  case 'X': return 'Z';
+  case 'C': return 'X';
+  case 'V': return 'C';
+  case 'B': return 'V';
+  case 'N': return 'B';
+  case 'M': return 'N';
+  case ',': return 'M';
+  case '.': return ',';
+  case '/': return '.';
+  case ' ': return ' ';
+  default:return ' ';
+ }
+}
+
+int main()
+{
+ char line[256];
+ while( cin.getline(line,256) )
+ {
+  for ( int i = 0;i < strlen(line);i++)
+   cout << Translatechar(line[i] ) ;
+  cout << endl;
+ }
+}
+
+#include "iostream"
+
+using namespace std;
+
+//2006-12-10 03:44:07 Accepted 1884 C++ 00:00.02 832K Time Limit Exceeded 
+//ÓĞ×ªÒâ×Ö·û
+
+int main ()
+{
+    char x,y;
+    for(;;)
+    {
+        if((x=getchar())==EOF) return 1;
+        if(x=='\n')
+        {   
+            printf("\n");
+            continue;
+        }
+        if(x==' ')
+        {   
+            printf(" ");
+            continue;
+        }
+        if('1'<x&&x<='9')
+        {
+            printf("%c",x-1);
+            continue;
+        }
+        switch(x)
+        {
+        case 'W': y='Q';break;
+        case '1': y='`';break;
+        case '0': y='9';break;
+        case '-': y='0';break;
+        case '=': y='-';break;
+        case 'E': y='W';break;
+        case 'R' :y='E';break;
+        case 'T':y='R';break;
+        case'Y': y='T';break;
+        case'U':y='Y';break;
+        case'I':y='U';break;
+        case'O':y='I';break;
+        case'P':y='O';break;
+        case '[' : y='P';break;
+        case']':y='[';break;
+        case'S':y='A';break;
+        case'D':y='S';break;
+        case'F':y='D';break;
+        case'G':y='F';break;
+        case'H':y='G';break;
+        case'J':y='H';break;
+        case'K':y='J';break;
+        case'L':y='K';break;
+        case';':y='L';break;
+            case '\'':y=';';break;
+        case'X':y='Z';break;
+        case'C':y='X';break;
+        case'V':y='C';break;
+        case'B':y='V';break;
+        case'N':y='B';break;
+        case'M':y='N';break;
+        case',':y='M';break;
+        case '.':y=',';break;
+        case'/':y='.';break;
+        }
+        printf("%c",y);
+    }
+    return 1;
+}
+
+ 

@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <iostream.h>
+#include <math.h>
+#define pi 3.141592653
+int main()
+{
+    double x1,y1,r1,x2,y2,r2;
+    double sum;
+    double ang1;
+    double ang2;
+    double t1,t2;
+    double a1,a2,s;
+    while(cin >> x1 >> y1 >> r1 >>x2 >> y2 >> r2)
+    {
+        t1=(x2-x1)*(x2-x1)+(y2-y1)*(y2-y1);
+        t1=sqrt(t1);
+        if(r1>=r2+t1)s=pi*r2*r2;
+        else if(r2>r1+t1)s=pi*r1*r1;
+        else if(t1>=r1+r2)s=0;
+        else{
+        ang1=acos((t1*t1+r1*r1-r2*r2)/(2*t1*r1));
+        ang2=acos((t1*t1+r2*r2-r1*r1)/(2*t1*r2));
+        a1= pi*r1*r1*ang1/pi;
+        a2= pi*r2*r2*ang2/pi;
+        s=a1+a2-(sin(ang1)*r1*t1);
+        }
+        printf("%.3f\n",s);
+        //cout << s << endl;
+    }
+}

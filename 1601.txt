@@ -1,0 +1,36 @@
+#include<iostream>
+#include<cstdio>
+#include <cmath>
+using namespace std;
+int main()
+{
+    double a,p;
+    int l,res;
+    double t,min;
+    int i;
+    while( cin >> a)
+    {
+        cin >> l;
+        if(a*l<1) {cout <<  "1 "  << l << endl; continue;}
+        if(a>=(double)l)  {cout << l << " 1" << endl;     continue;}
+        min=l;
+        res=0;
+        for(i=1;i<=l;i++)
+        {
+            t=((double)i)*a;
+            p=(int)(t+0.5f);
+            if(p>(double)l) break;
+            t=fabs(p-t);
+            if(t<min)
+            {
+                min=t;
+                res=i;
+            }
+        }
+        cout << (int)(res*a+0.5f) << " " << res << endl;
+    }
+}
+            
+            
+        
+    

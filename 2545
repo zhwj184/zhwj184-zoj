@@ -1,0 +1,23 @@
+#include<iostream.h>
+#include<cmath>
+int main()
+{
+    double w;
+    int y;
+    while(cin >> y && y!=0)
+    {
+        w=log(4);
+        for(int i=1960;i<=y;i+=10)
+          w*=2;
+
+        int f=1;
+        double s=0;
+        while(s<w)
+        {
+            f++;
+            s+=log((double)f);
+
+        }
+        cout << f-1 << endl;
+    }
+}

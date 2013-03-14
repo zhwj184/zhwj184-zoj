@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <string.h>
+
+int abs ( int i )
+{
+    return i > 0 ? i : -i ;
+}
+
+int N, a[101], b[2][2001], p;
+
+int main ()
+{
+    //freopen ( "in.txt", "r", stdin );
+    while ( scanf ( "%d", &N ) && N >= 0 )
+    {
+        int i, end, j, k;
+        for ( i = 0; i < N; i ++ )
+        {
+            scanf ( "%d", &a[i] );
+        }
+        memset ( b, -1, sizeof ( b ) );
+        b[1][0] = 0, p = 0, end = 0;
+        for ( i = 0; i < N; i ++, p = 1 - p )
+        {
+            memcpy ( b[p], b[1 - p], sizeof ( b[p] ) );
+            end += a[i];
+            for ( j = 0; j <= end; j ++ )
+            {
+                k = abs ( j + a[i] );
+                if ( k <= end && b[1 - p][j] >= 0 && b[p][k] < b[1 - p][j] + a[i] )
+                {
+                    b[p][j + a[i]] = b[1 - p][j] + a[i];
+                }
+                k = abs ( j - a[i] );
+                if ( k <= end && b[1 - p][j] >= 0 && b[p][k] < b[1 - p][j] + a[i] )
+                {
+                    b[p][k] = b[1 - p][j] + a[i];
+                }
+            }
+        }
+        if ( b[1 - p][0] )
+        {
+            printf ( "%d\n", b[1 - p][0] / 2 );
+        }
+        else
+        {
+            printf ( "Sorry\n" );
+        }
+    }
+    return 0;
+}
+
+

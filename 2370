@@ -1,0 +1,40 @@
+#include <cstdio>
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+    double l,ll,c,n,t,r;
+    double y,d;
+    double min,max,mid;
+    while(cin >> l >> n >> c)
+    {
+        if(l==-1&&n==-1&&c==-1)
+         break;
+         if(n==0||c==0)
+              printf("0.000\n");
+        else{
+         min=0;
+         max=3.1415927;
+        ll=(1+n*c)*l;
+        t=l/ll;
+        while(true)
+        {
+            mid=(min+max)/2;
+            y=sin(mid)-mid*t;
+            if(y>0.000000000000001)
+            min=mid;
+            else if(y<0)max=mid;
+            else break;
+        }
+        r=l/(2*sin(mid));
+        d=r-r*cos(mid);
+        printf("%.3lf\n",d);
+        //cout << d << endl;
+    }
+    }
+}
+            
+
+        
+

@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <math.h>
+
+double x,xx,b,r;
+int p;
+int flag;
+
+main(){
+   while (1 == scanf("%lf",&x)) {
+      if (!x) return 0;
+      xx = fabs(x);
+      flag=0;
+      for (b=2;(r=b*b)<=xx;b++) {
+         for (p=2;r<xx;p++) r*=b;
+         if (r == xx) {
+            if (x > 0 || p%2) {
+               printf("%d\n",p);
+               flag=1;
+               break;
+            }
+         }
+      }
+     if(!flag) printf("1\n");
+   }
+}

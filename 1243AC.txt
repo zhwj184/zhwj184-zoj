@@ -1,0 +1,51 @@
+#include<cstdio>
+#include<cmath>
+#include <iostream>
+using namespace std;
+char url[61];
+int main()
+{
+	int a=0,b=0,c=0,d=0;
+	int n;
+	cin >> n;
+	int i,j,k;
+	for(i=0;i<n;i++)
+	{
+		a=0,b=0,c=0,d=0;
+		cin >> url;
+		k=strlen(url);
+		for(j=0;j<k;j++)
+		{
+			if(url[j]==':'&&a==0)
+			{
+				a=j;
+				j+=3;
+				url[a]=0;
+				b=a+3;
+
+			}
+			if(url[j]==':'&&a>0)
+			{
+				c=j+1;
+				url[j]=0;
+			}
+			if(url[j]=='/')
+			{
+				d=j+1;
+				url[j]=0;
+				break;
+			}
+		}
+		printf("URL #%d\n",i+1);
+		printf("Protocol = %s\nHost     = %s\n",url,&url[b]);
+		printf("Port     = ");
+		if (c > 0)    printf("%s\n",&url[c]);
+		else printf("<default>\n");
+		printf("Path     = ");
+		if (d > 0)    printf("%s\n",&url[d]);
+		else printf("<default>\n");
+		printf("\n");
+	}
+}
+
+		

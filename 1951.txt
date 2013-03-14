@@ -1,0 +1,39 @@
+抄送：  
+邮件主题： 1951yitongguo 
+发件日期： Thu, 28 Dec 2006 07:57:29 +0800 看信件原文   打印信件 
+ 
+来信内容: 选择内码:from:GBKGB2312BIG-5UTF-8  to:GBKBIG-5UTF-8
+ 
+ 
+
+
+#include <iostream.h>
+#include<stdio.h>
+//#include <fstream.h>
+#include <math.h>
+
+int main()
+{
+ int n,i,j;
+ bool prime[1000000];
+// fstream in("in.txt",ios::in);
+// fstream out("out.txt",ios::out);
+ for (i=0; i<1000000; i++)
+  prime[i] = true;
+ for (i=2; i<=(int)sqrt(1000000); i++) {
+  for (j=i*i; j<1000000; j+=i)
+   prime[j-1] = false;
+ }
+ while ((scanf("%ld",&n))!=EOF) {
+  if (n == 0)
+   break;
+  for (i=3; i<n-2; i+=2) {
+   if (prime[i-1] && prime[n-i-1]) {
+    printf("%ld = %ld + %ld\n",n,i,n-i);
+    break;
+   }
+  }
+ }
+}
+
+ 

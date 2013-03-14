@@ -1,0 +1,39 @@
+#include <iostream.h>
+#include <stdio.h>
+int main()
+{
+    long n,m;
+    long A[100001];
+   // long B[10001];
+    int c,d;
+    int p;
+    cin >> n;
+    while(n--)
+    {
+        cin >> m;
+        long i,j,k;
+        c=0;
+        d=0;
+        cin >> A[0];
+        p=A[0];
+        if(p>=2)c++;
+        for(i=1;i<m;i++)
+        {
+         cin >> A[i];
+         if(A[i]>=2) c++;
+         p^=A[i];
+        }
+        if(p==0)
+        {
+            if(c==0) cout << "1\n";
+            else cout << "2\n";
+        }
+        else
+        {
+            if(c==0) cout << "2\n" ;
+            else cout << "1\n";
+        }
+      //  cout << k << endl;
+    }
+}
+

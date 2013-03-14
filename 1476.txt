@@ -1,0 +1,33 @@
+抄送：  
+邮件主题： 1476 
+发件日期： Thu, 04 Jan 2007 21:24:02 +0800 看信件原文   打印信件 
+ 
+来信内容: 选择内码:from:GBKGB2312BIG-5UTF-8  to:GBKBIG-5UTF-8
+ 
+ 
+
+
+#include<iostream.h>
+#include<stdio.h>
+main()
+{
+    int s,d;
+    int k;
+    while(scanf("%d%d",&s,&d))
+    {
+        k=60;
+        if(s==0&&d==0)break;
+        if(s%4==0){k=k/4;}
+        else if(s%2==0){k/=2;}
+        if(s%3==0){k=k/3;}
+        if(s%5==0){k=k/5;}
+        if(k==1)printf("0\n");
+        else{
+            if((d+1)*s%60==0)printf("1\n");
+            else if((d+1)*(d+1)*s%60==0)printf("2\n");
+            else printf("Impossible\n");
+        }
+    }
+}
+
+ 

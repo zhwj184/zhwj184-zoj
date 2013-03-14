@@ -1,0 +1,25 @@
+    #include <stdio.h>
+      int main()
+      {
+           int n;
+           while (scanf("%d",&n)!=EOF)
+           {
+                int num=-1,tot=0,t;
+               while (n--)
+                {
+                    scanf("%d",&t);
+                   if (tot==0)
+                    {
+                         tot=1;
+                         num=t;
+                    }
+                    else
+                     if (num==t)
+                      tot++;
+                     else
+                      tot--;
+               }
+               printf("%d\n",num);
+          }
+          return 0;
+     }

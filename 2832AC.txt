@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <cstdlib>
+#include <cstdio>
+using namespace std;
+#define MAX 102
+int main()
+{
+	string name[MAX];
+	string file[MAX][MAX];
+	int  num[MAX],used[MAX];
+	int cas=0;
+	int i,j,k,m,n;
+	string temp;
+	while(cin >> m)
+	{
+		if(cas>0) 
+			cout << endl;
+		cas++;
+
+		for(i=0;i<MAX;i++)
+		{
+			used[i]=num[i]=0;
+			name[i]="";
+		}
+		for(i=0;i<m;i++)
+		{
+			cin >> name[i];
+			cin >> num[i];
+			for(j=0;j<num[i];j++)
+				cin >> file[i][j];
+		}
+
+		for(i=0;i<m;i++)
+			for(j=0;j<m;j++)
+				if(name[i]<name[j])
+				{
+					temp=name[i];
+					name[i]=name[j];
+					name[j]=temp;
+				}
+        int x;
+		for(i=0;i<m;i++)
+		{
+			x=-1;
+				for(j=0;j<num[i];j++)
+				{
+					for(k=0;k<m;k++)
+					if(name[k]==file[i][j])
+					{
+						x=k;
+						break;
+					}
+					if(x!=-1) used[x]=1;
+				}
+			
+		}
+
+		for(i=0;i<m;i++)
+			if(!used[i]) 
+				cout  << name[i] << endl;
+	}
+}

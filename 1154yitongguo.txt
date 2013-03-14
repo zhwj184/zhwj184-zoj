@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main (void)
+{
+    int Base, Num, DigiSum, T, i;
+    char Digits[33];
+    for(scanf("%d", &T); T; T--)
+    {
+        for(scanf("%d", &Base); Base; scanf("%d", &Base))
+        {
+            scanf("%s", Digits);
+            for(i=DigiSum=Num=0; Digits[i]!='\0'; i++)
+            {
+                Digits[i]-='0';
+                Num*=Base;
+                DigiSum+=Digits[i];
+                Num+=Digits[i];
+            }
+            if(Num%DigiSum==0)
+                puts("yes");
+            else
+                puts("no");
+        }
+        if(T>1)
+            putchar('\n');
+    }
+    return 0;
+} 

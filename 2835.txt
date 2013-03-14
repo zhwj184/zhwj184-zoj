@@ -1,0 +1,81 @@
+include <stdio.h>
+#include <iostream.h>
+int main() {
+    int M[11][11];
+    int m,n;
+    int K[1001];
+    while(cin>>m) {
+        if(m==0)break;
+          int i,j,f1=1,f2=1,f3=1,f4=1,f5=1;
+          for(i=0;i<1001;i++)
+            K[i]=0;
+             for(i=1;i<=m;i++)
+              for(j=1;j<=m;j++)
+               {
+                  cin>>M[i][j];
+               }
+               if(m==1){
+
+               cout<<"Yes\n";
+               }
+               else{
+
+               for(i=1;i<=m;i++){
+                 for(j=1;j<=m;j++)
+                 {
+                  if(K[M[i][j]]==0)K[M[i][j]]=1;
+                  else {f1=0;break;}
+                 }
+                 if(!f1)break;
+               }
+
+
+                    int t;
+                    int sum=0;
+                    for(i=1;i<=m;i++)sum+=M[i][1];
+                      for(i=1;i<=m;i++)
+                        {
+                           t=0;
+                         for(j=1;j<=m;j++)
+                          {
+                            t+=M[i][j];
+                          }
+                          if(t!=sum){f2=0;break;}
+                        }
+
+
+
+                                     for(i=1;i<=m;i++)
+                                     {
+                                           t=0;
+                                           for(j=1;j<=m;j++)
+                                             {
+                                                 t+=M[j][i];
+                                             }
+                                           if(t!=sum){f3=0;break;}
+                                     }
+
+
+                                                         t=0;
+                                                         for(i=1;i<=m;i++)
+                                                         {
+                                                            t+=M[i][i];
+                                                         }
+                                                         if(t!=sum){f4=0;}
+
+
+                                                                 t=0;
+                                                                
+for(i=1;i<=m;i++)
+                                                                 {
+                                                                     
+t+=M[i][m-i+1];
+                                                                 }
+                                                                  
+if(t!=sum){f5=0;}
+        if(f1==1&&f2==1&&f3==1&&f4==1&&f5==1)cout<<"Yes\n";
+        else cout<<"No\n";
+               }
+     }
+  }
+

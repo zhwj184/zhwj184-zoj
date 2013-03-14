@@ -1,0 +1,68 @@
+#include<stdio.h>
+#include<math.h>
+#include<string.h>
+int main()
+{
+    int i,j,k,l,m,find,length;
+    long n;
+    char s[20];
+     char ct;
+     int t,tt;
+
+    while(scanf("%ld%s",&n,s)){
+        if(n==0&&strcmp(s,"END")==0)break;
+        find=0;
+        int W = strlen(s);
+        for(i=0;i<W;++i)
+            for(j=i+1;j<W;++j)
+                if(s[i]>s[j])
+                {
+                    ct = s[i];
+                    s[i] = s[j];
+                    s[j] = ct;
+                }
+
+
+        length=strlen(s)-1;
+        for(i=length;i>=0;i--){
+            for(j=length;j>=0;j--){
+                if(j==i)
+                   continue;
+                for(k=length;k>=0;k--){
+                    if(k==j||k==i)
+                       continue;
+                    for(l=length;l>=0;l--){
+                        if(l==i||l==j||l==k)
+                           continue;
+                        for(m=length;m>=0;m--){
+                            if(m==i||m==j||m==k||m==l)
+                               continue;
+                            if( (s[i]-'A'+1) - pow(s[j]-'A'+1,2) +
+pow(s[k]-'A'+1,3) - pow(s[l]-'A'+1,4) +  pow(s[m]-'A'+1,5) == n){
+                                find=1;
+                                break;
+                            }
+                            if(find)
+                               break;
+                        }
+                        if(find)
+                           break;
+                    }
+                    if(find)
+                       break;
+                }
+                if(find)
+                   break;
+            }
+            if(find)
+               break;
+        }
+        if(find)
+           printf("%c%c%c%c%c\n",s[i],s[j],s[k],s[l],s[m]);
+        else
+           printf("no solution\n");
+
+    }
+    return 0;
+}
+

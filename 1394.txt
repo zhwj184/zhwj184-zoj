@@ -1,0 +1,31 @@
+# include <stdio.h> 
+# include <string.h> 
+
+int main () 
+{ 
+   char str[15]; 
+   int r,g,a,t,rem; 
+   float dis; 
+   while (1) 
+   { 
+      scanf ("%s",str); 
+      if (strcmp ("ENDOFINPUT",str)==0) 
+      { 
+         break; 
+      } 
+      scanf ("%d%d%d%*s",&r,&g,&a); 
+      t=g*5; 
+      a=a>180? 360-a:a; 
+      dis=r*3.14159*2*a/360.0; 
+      /* look carefully */ 
+      rem=g-dis/2.5; 
+      /******************/ 
+      if (t>=2*dis) 
+      { 
+         printf ("YES %d\n",rem); 
+      } 
+      else 
+      { 
+         printf ("NO %d\n",t); 
+      } 
+   

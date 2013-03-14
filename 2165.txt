@@ -1,0 +1,71 @@
+#include <iostream.h>
+#include <stdio.h>
+int main()
+{
+    char s[21][21];
+    int i,j,k,m,n;
+    int A[401],B[401];
+    int flag[21][21];
+    while(cin >> m >> n)
+    {
+        if( m == 0 && n == 0)break;
+        int p,q;
+        for( i = 1; i<=n; i++)
+        
+         for( j = 1;j<=m;j++)
+         {
+            cin >> s[i][j];
+            if( s[i][j]=='@')
+            {p=i;
+             q=j;}
+             if(s[i][j]=='.')flag[i][j]=1;
+             else flag[i][j]=0;
+         }
+         int w=1;
+         int h=1;
+         A[0]=p;
+         B[0]=q;
+         int count=1;
+         while( w > 0)
+         {
+            if(p-1>=1&&s[p-1][q]=='.'&&flag[p-1][q])
+              {
+                 A[w]=p-1;
+                 B[w]=q;
+                 flag[p-1][q]=0;
+                 count++;
+                 w++;
+              }
+            if(p+1<=n&&s[p+1][q]=='.'&&flag[p+1][q])
+              {
+                 A[w]=p+1;
+                 B[w]=q;
+                 flag[p+1][q]=0;
+                 count++;
+                 w++;
+              }
+              if(q-1>=1&&s[p][q-1]=='.'&&flag[p][q-1])
+              {
+                 A[w]=p;
+                 B[w]=q-1;
+                 flag[p][q-1]=0;
+                 count++;
+                 w++;
+              }
+              if(q+1<=m&&s[p][q+1]=='.'&&flag[p][q+1])
+              {
+                 A[w]=p;
+                 B[w]=q+1;
+                 flag[p][q+1]=0;
+                 count++;
+                 w++;
+              }
+
+              p = A[w-1];
+              q = B[w-1];
+              w--;
+         }
+         cout << count<<endl;
+    }
+}
+

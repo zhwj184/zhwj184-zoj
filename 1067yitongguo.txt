@@ -1,0 +1,39 @@
+#include <iostream.h> 
+
+int d(int a,int b,int c,int d,int e,int f) 
+{ 
+    return (a-d)*(a-d)+(b-e)*(b-e)+(c-f)*(c-f); 
+} 
+main() 
+{ 
+    int a[16][3]; 
+    int r,g,b,i,num,max,dis; 
+    cin>>r>>g>>b; 
+    i=0; 
+    while(i<16) 
+    { 
+        a[i][0]=r; 
+        a[i][1]=g; 
+        a[i][2]=b; 
+        i++; 
+        cin>>r>>g>>b; 
+    } 
+
+    while(r!=-1||g!=-1||b!=-1) 
+    { 
+        num=0; 
+        max=3*255*255; 
+        for(i=0;i<16;i++) 
+        { 
+            dis=d(r,g,b,a[i][0],a[i][1],a[i][2]); 
+            if(dis<max) 
+            { 
+                num=i; 
+                max=dis; 
+            } 
+        } 
+        cout<<"("<<r<<","<<g<<","<<b<<") maps to ("<<a[num][0]<<","<<a[num][1]<<","<<a[num][2]<<")"<<endl; 
+        cin>>r>>g>>b; 
+    } 
+} 
+

@@ -1,0 +1,43 @@
+ 
+发件人： "" <05jzgjzwj@st.zju.edu.cn> 存入地址簿 阻止发信人 加入过滤器 
+收件人： 05jzgjzwj@st.zju.edu.cn 
+抄送：  
+邮件主题： 1314yitongguo 
+发件日期： Fri, 08 Dec 2006 19:53:02 +0800 看信件原文   打印信件 
+ 
+来信内容: 选择内码:from:GBKGB2312BIG-5UTF-8  to:GBKBIG-5UTF-8
+ 
+ 
+
+
+#include<stdio.h>
+main()
+{
+    long  s,m;
+    long A[100000];
+    int flag;
+    long i,j,k,n;
+    while((scanf("%ld%ld",&s,&m))!=EOF)
+    {
+        A[0]=1;
+        for(i=1;i<m;i++)
+        A[i]=0;
+        k=0;
+        for(j=0;;j++)
+        {
+            k=(k+s)%m;
+            if(k==0){n=j;break;}
+            A[k]=1;
+        }
+        flag=1;
+        for(j=0;j<m;j++)
+        if(A[j]==0){flag=0;break;}
+        if(flag)printf("%10ld%10ld    Good Choice\n",s,m);
+        else printf("%10ld%10ld    Bad Choice\n",s,m);
+        printf("\n");
+
+    }
+}
+
+
+ 

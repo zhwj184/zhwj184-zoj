@@ -1,0 +1,29 @@
+#include<iostream.h>
+#include<stdio.h>
+int main(void)
+{
+	char c,ch;
+	char s[100];
+	int n;
+	int count;
+	count=0;
+	n=0;
+	while(cin.get(c)&&c!='#')
+	{
+		
+		if(c=='\n')
+		{
+			cout<<n<<endl;
+			count=0;
+			n=0;
+		}
+		else if(c>='A'&&c<='Z')
+		{
+			count++;
+			n+=(c-'A'+1)*count;
+		}
+		else
+			count++;
+	}
+	return 0;
+}

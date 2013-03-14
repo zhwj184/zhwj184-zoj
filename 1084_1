@@ -1,0 +1,87 @@
+#include <iostream>
+#include <cstdio>
+#include <string>
+using namespace std;
+
+const int MAXN = 30;
+int n, ok, c[MAXN], data[MAXN][MAXN];
+
+int check(int id)
+{
+    int i;
+    for( i = 1; i <= n; i++)
+    {
+        if( (data[id][i] && c[id] != c[i]) || (!data[id][i]))
+            continue;
+        return 0;
+    }
+    return 1;
+}
+
+void search(int id,int color)
+{
+    int i;
+    if( id == n+1)
+    {
+        ok = 1;
+        return;
+    }
+    if( ok )
+        return;
+    for( i = 1; i <= color; i++)
+    {
+        c[id] = i;
+        if( check(id))
+        {
+            search(id + 1, color);
+        }
+    }
+    c[id] = 0;
+}
+
+int main()
+{
+    char ch,tch;
+    int x,y;
+    while( cin >> n && n)
+    {
+        //tch = getchar();
+        memset(data,0,sizeof(data));
+        memset(c,0,sizeof(c));
+        for( int i = 0; i < n; i++)
+        {
+        cin >> ch;
+        //ch = getchar();
+        x = ch - 'A' + 1;
+        //cout << ch << endl;
+        cin >> tch;
+        //tch = getchar();
+        //cout << tch << endl;
+        while( ch = getchar())
+        {
+           // cout << ch << endl;
+            if( ch < 'A')
+                break;
+            y = ch - 'A' + 1;
+            data[x][y] = 1;
+            data[y][x] = 1;
+            
+        }
+        }
+        for( int i = 1; i <= 4; i++)
+        {
+            ok = 0;
+            search(0,i);
+            if( ok)
+            {
+                if( i == 1)
+                    cout << "1 channel needed." << endl;
+                else
+                    cout << i << " channels needed." << endl;
+                break;
+            }
+        }
+
+    }
+    
+}

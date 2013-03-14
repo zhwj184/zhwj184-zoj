@@ -1,0 +1,385 @@
+                        .module _1514.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile 1514.c
+ 0000                   .dbfunc e judge _judge fI
+ 0000           ;              y -> R10,R11
+ 0000           ;              x -> R12,R13
+                        .even
+ 0000           _judge::
+ 0000 00D0              rcall push_xgset003C
+ 0002 A22E              mov R10,R18
+ 0004 B32E              mov R11,R19
+ 0006 C02E              mov R12,R16
+ 0008 D12E              mov R13,R17
+ 000A                   .dbline -1
+ 000A                   .dbline 7
+ 000A           ; 
+ 000A           ; 
+ 000A           ; 
+ 000A           ;             #include <stdio.h>
+ 000A           ; 
+ 000A           ; int judge(int x, int y)
+ 000A           ; {
+ 000A                   .dbline 8
+ 000A           ;    if(y==0 || x%y==0 || x>2*y)
+ 000A AA20              tst R10
+ 000C 11F4              brne X0
+ 000E BB20              tst R11
+ 0010 79F0              breq L5
+ 0012           X0:
+ 0012 2A2D              mov R18,R10
+ 0014 3B2D              mov R19,R11
+ 0016 0C2D              mov R16,R12
+ 0018 1D2D              mov R17,R13
+ 001A 00D0              rcall mod16s
+ 001C 0030              cpi R16,0
+ 001E 0107              cpc R16,R17
+ 0020 39F0              breq L5
+ 0022           X1:
+ 0022 2A2C              mov R2,R10
+ 0024 3B2C              mov R3,R11
+ 0026 220C              lsl R2
+ 0028 331C              rol R3
+ 002A 2C14              cp R2,R12
+ 002C 3D04              cpc R3,R13
+ 002E 1CF4              brge L2
+ 0030           X2:
+ 0030           L5:
+ 0030                   .dbline 9
+ 0030           ;       return 1;
+ 0030 01E0              ldi R16,1
+ 0032 10E0              ldi R17,0
+ 0034 0BC0              rjmp L1
+ 0036           L2:
+ 0036                   .dbline 11
+ 0036           ;    else
+ 0036           ;       return 1^judge(y, x-y);
+ 0036 2C2D              mov R18,R12
+ 0038 3D2D              mov R19,R13
+ 003A 2A19              sub R18,R10
+ 003C 3B09              sbc R19,R11
+ 003E 0A2D              mov R16,R10
+ 0040 1B2D              mov R17,R11
+ 0042 DEDF              rcall _judge
+ 0044 81E0              ldi R24,1
+ 0046 90E0              ldi R25,0
+ 0048 0827              eor R16,R24
+ 004A 1927              eor R17,R25
+ 004C                   .dbline -2
+ 004C           L1:
+ 004C                   .dbline 0 ; func end
+ 004C 00C0              rjmp pop_xgset003C
+ 004E                   .dbsym r y 10 I
+ 004E                   .dbsym r x 12 I
+ 004E                   .dbend
+ 004E                   .dbfunc e main _main fI
+ 004E           ;              k -> <dead>
+ 004E           ;              r -> y+402
+ 004E           ;              j -> R22,R23
+ 004E           ;              y -> y+202
+ 004E           ;              x -> y+2
+ 004E           ;              i -> R20,R21
+                        .even
+ 004E           _main::
+ 004E EF97              sbiw R28,63
+ 0050 EF97              sbiw R28,63
+ 0052 EF97              sbiw R28,63
+ 0054 EF97              sbiw R28,63
+ 0056 EF97              sbiw R28,63
+ 0058 EF97              sbiw R28,63
+ 005A EF97              sbiw R28,63
+ 005C EF97              sbiw R28,63
+ 005E EF97              sbiw R28,63
+ 0060 A397              sbiw R28,35  ; offset = 602
+ 0062                   .dbline -1
+ 0062                   .dbline 15
+ 0062           ; }
+ 0062           ; 
+ 0062           ; int main()
+ 0062           ; {
+ 0062                   .dbline 18
+ 0062           ;    int x[100], y[100], r[100];
+ 0062           ;    int i,j,k;
+ 0062           ;    for(i=0;;i++){
+ 0062 4427              clr R20
+ 0064 5527              clr R21
+ 0066           L7:
+ 0066                   .dbline 18
+ 0066                   .dbline 19
+ 0066           ;    scanf("%d%d", &x[i],&y[i]);
+ 0066 242E              mov R2,R20
+ 0068 352E              mov R3,R21
+ 006A 220C              lsl R2
+ 006C 331C              rol R3
+ 006E 422C              mov R4,R2
+ 0070 532C              mov R5,R3
+ 0072 8C2F              mov R24,R28
+ 0074 9D2F              mov R25,R29
+ 0076 8653              subi R24,54  ; offset = 202
+ 0078 9F4F              sbci R25,255
+ 007A 280E              add R2,R24
+ 007C 391E              adc R3,R25
+ 007E 3982              std y+1,R3
+ 0080 2882              std y+0,R2
+ 0082 8C2F              mov R24,R28
+ 0084 9D2F              mov R25,R29
+ 0086 0296              adiw R24,2
+ 0088 242D              mov R18,R4
+ 008A 352D              mov R19,R5
+ 008C 280F              add R18,R24
+ 008E 391F              adc R19,R25
+ 0090 00E0              ldi R16,<L11
+ 0092 10E0              ldi R17,>L11
+ 0094 00D0              rcall _scanf
+ 0096                   .dbline 21
+ 0096           ; 
+ 0096           ;       if(x[i]==y[i] && x[i]==0)
+ 0096 242E              mov R2,R20
+ 0098 352E              mov R3,R21
+ 009A 220C              lsl R2
+ 009C 331C              rol R3
+ 009E 8C2F              mov R24,R28
+ 00A0 9D2F              mov R25,R29
+ 00A2 0296              adiw R24,2
+ 00A4 E22D              mov R30,R2
+ 00A6 F32D              mov R31,R3
+ 00A8 E80F              add R30,R24
+ 00AA F91F              adc R31,R25
+ 00AC A080              ldd R10,z+0
+ 00AE B180              ldd R11,z+1
+ 00B0 8C2F              mov R24,R28
+ 00B2 9D2F              mov R25,R29
+ 00B4 8653              subi R24,54  ; offset = 202
+ 00B6 9F4F              sbci R25,255
+ 00B8 E22D              mov R30,R2
+ 00BA F32D              mov R31,R3
+ 00BC E80F              add R30,R24
+ 00BE F91F              adc R31,R25
+ 00C0 2080              ldd R2,z+0
+ 00C2 3180              ldd R3,z+1
+ 00C4 A214              cp R10,R2
+ 00C6 B304              cpc R11,R3
+ 00C8 29F4              brne L12
+ 00CA           X3:
+ 00CA AA20              tst R10
+ 00CC 19F4              brne L12
+ 00CE BB20              tst R11
+ 00D0 09F4              brne L12
+ 00D2           X4:
+ 00D2                   .dbline 22
+ 00D2           ;          break;
+ 00D2 66C0              rjmp L9
+ 00D4           L12:
+ 00D4                   .dbline 23
+ 00D4           ;       if(x[i] > y[i])
+ 00D4 A42E              mov R10,R20
+ 00D6 B52E              mov R11,R21
+ 00D8 AA0C              lsl R10
+ 00DA BB1C              rol R11
+ 00DC 8C2F              mov R24,R28
+ 00DE 9D2F              mov R25,R29
+ 00E0 8653              subi R24,54  ; offset = 202
+ 00E2 9F4F              sbci R25,255
+ 00E4 EA2D              mov R30,R10
+ 00E6 FB2D              mov R31,R11
+ 00E8 E80F              add R30,R24
+ 00EA F91F              adc R31,R25
+ 00EC 2080              ldd R2,z+0
+ 00EE 3180              ldd R3,z+1
+ 00F0 8C2F              mov R24,R28
+ 00F2 9D2F              mov R25,R29
+ 00F4 0296              adiw R24,2
+ 00F6 EA2D              mov R30,R10
+ 00F8 FB2D              mov R31,R11
+ 00FA E80F              add R30,R24
+ 00FC F91F              adc R31,R25
+ 00FE 4080              ldd R4,z+0
+ 0100 5180              ldd R5,z+1
+ 0102 2414              cp R2,R4
+ 0104 3504              cpc R3,R5
+ 0106 2CF5              brge L14
+ 0108           X5:
+ 0108                   .dbline 24
+ 0108           ;          r[i] = judge(x[i], y[i]);
+ 0108 C42E              mov R12,R20
+ 010A D52E              mov R13,R21
+ 010C CC0C              lsl R12
+ 010E DD1C              rol R13
+ 0110 8C2F              mov R24,R28
+ 0112 9D2F              mov R25,R29
+ 0114 8653              subi R24,54  ; offset = 202
+ 0116 9F4F              sbci R25,255
+ 0118 EC2D              mov R30,R12
+ 011A FD2D              mov R31,R13
+ 011C E80F              add R30,R24
+ 011E F91F              adc R31,R25
+ 0120 2081              ldd R18,z+0
+ 0122 3181              ldd R19,z+1
+ 0124 8C2F              mov R24,R28
+ 0126 9D2F              mov R25,R29
+ 0128 0296              adiw R24,2
+ 012A EC2D              mov R30,R12
+ 012C FD2D              mov R31,R13
+ 012E E80F              add R30,R24
+ 0130 F91F              adc R31,R25
+ 0132 0081              ldd R16,z+0
+ 0134 1181              ldd R17,z+1
+ 0136 64DF              rcall _judge
+ 0138 A02E              mov R10,R16
+ 013A B12E              mov R11,R17
+ 013C 8C2F              mov R24,R28
+ 013E 9D2F              mov R25,R29
+ 0140 8E56              subi R24,110  ; offset = 402
+ 0142 9E4F              sbci R25,254
+ 0144 EC2D              mov R30,R12
+ 0146 FD2D              mov R31,R13
+ 0148 E80F              add R30,R24
+ 014A F91F              adc R31,R25
+ 014C B182              std z+1,R11
+ 014E A082              std z+0,R10
+ 0150 24C0              rjmp L15
+ 0152           L14:
+ 0152                   .dbline 26
+ 0152           ;       else
+ 0152           ;          r[i] = judge(y[i], x[i]);
+ 0152 C42E              mov R12,R20
+ 0154 D52E              mov R13,R21
+ 0156 CC0C              lsl R12
+ 0158 DD1C              rol R13
+ 015A 8C2F              mov R24,R28
+ 015C 9D2F              mov R25,R29
+ 015E 0296              adiw R24,2
+ 0160 EC2D              mov R30,R12
+ 0162 FD2D              mov R31,R13
+ 0164 E80F              add R30,R24
+ 0166 F91F              adc R31,R25
+ 0168 2081              ldd R18,z+0
+ 016A 3181              ldd R19,z+1
+ 016C 8C2F              mov R24,R28
+ 016E 9D2F              mov R25,R29
+ 0170 8653              subi R24,54  ; offset = 202
+ 0172 9F4F              sbci R25,255
+ 0174 EC2D              mov R30,R12
+ 0176 FD2D              mov R31,R13
+ 0178 E80F              add R30,R24
+ 017A F91F              adc R31,R25
+ 017C 0081              ldd R16,z+0
+ 017E 1181              ldd R17,z+1
+ 0180 3FDF              rcall _judge
+ 0182 A02E              mov R10,R16
+ 0184 B12E              mov R11,R17
+ 0186 8C2F              mov R24,R28
+ 0188 9D2F              mov R25,R29
+ 018A 8E56              subi R24,110  ; offset = 402
+ 018C 9E4F              sbci R25,254
+ 018E EC2D              mov R30,R12
+ 0190 FD2D              mov R31,R13
+ 0192 E80F              add R30,R24
+ 0194 F91F              adc R31,R25
+ 0196 B182              std z+1,R11
+ 0198 A082              std z+0,R10
+ 019A           L15:
+ 019A                   .dbline 27
+ 019A           ;    }
+ 019A           L8:
+ 019A                   .dbline 18
+ 019A 4F5F              subi R20,255  ; offset = 1
+ 019C 5F4F              sbci R21,255
+ 019E                   .dbline 18
+ 019E 63CF              rjmp L7
+ 01A0           L9:
+ 01A0                   .dbline 28
+ 01A0           ;    for(j=0;j<i;j++){
+ 01A0 6627              clr R22
+ 01A2 7727              clr R23
+ 01A4 19C0              rjmp L19
+ 01A6           L16:
+ 01A6                   .dbline 28
+ 01A6                   .dbline 29
+ 01A6           ;       if(r[j])
+ 01A6 8C2F              mov R24,R28
+ 01A8 9D2F              mov R25,R29
+ 01AA 8E56              subi R24,110  ; offset = 402
+ 01AC 9E4F              sbci R25,254
+ 01AE E62F              mov R30,R22
+ 01B0 F72F              mov R31,R23
+ 01B2 EE0F              lsl R30
+ 01B4 FF1F              rol R31
+ 01B6 E80F              add R30,R24
+ 01B8 F91F              adc R31,R25
+ 01BA 2080              ldd R2,z+0
+ 01BC 3180              ldd R3,z+1
+ 01BE 2220              tst R2
+ 01C0 11F4              brne X6
+ 01C2 3320              tst R3
+ 01C4 21F0              breq L20
+ 01C6           X6:
+ 01C6                   .dbline 30
+ 01C6           ;          printf("Stan wins\n");
+ 01C6 00E0              ldi R16,<L22
+ 01C8 10E0              ldi R17,>L22
+ 01CA 00D0              rcall _printf
+ 01CC 03C0              rjmp L21
+ 01CE           L20:
+ 01CE                   .dbline 32
+ 01CE           ;       else
+ 01CE           ;          printf("Ollie wins\n");
+ 01CE 00E0              ldi R16,<L23
+ 01D0 10E0              ldi R17,>L23
+ 01D2 00D0              rcall _printf
+ 01D4           L21:
+ 01D4                   .dbline 33
+ 01D4           ;    }
+ 01D4           L17:
+ 01D4                   .dbline 28
+ 01D4 6F5F              subi R22,255  ; offset = 1
+ 01D6 7F4F              sbci R23,255
+ 01D8           L19:
+ 01D8                   .dbline 28
+ 01D8 6417              cp R22,R20
+ 01DA 7507              cpc R23,R21
+ 01DC 24F3              brlt L16
+ 01DE           X7:
+ 01DE                   .dbline -2
+ 01DE           L6:
+ 01DE                   .dbline 0 ; func end
+ 01DE EF96              adiw R28,63
+ 01E0 EF96              adiw R28,63
+ 01E2 EF96              adiw R28,63
+ 01E4 EF96              adiw R28,63
+ 01E6 EF96              adiw R28,63
+ 01E8 EF96              adiw R28,63
+ 01EA EF96              adiw R28,63
+ 01EC EF96              adiw R28,63
+ 01EE EF96              adiw R28,63
+ 01F0 A396              adiw R28,35  ; offset = 602
+ 01F2 0895              ret
+ 01F4                   .dbsym l k 3 I
+ 01F4                   .dbsym l r 402 A[200:100]I
+ 01F4                   .dbsym r j 22 I
+ 01F4                   .dbsym l y 202 A[200:100]I
+ 01F4                   .dbsym l x 2 A[200:100]I
+ 01F4                   .dbsym r i 20 I
+ 01F4                   .dbend
+                        .area data(ram, con, rel)
+ 0000                   .dbfile 1514.c
+ 0000           L23:
+ 0000                   .blkb 12
+                        .area idata
+ 0000 4F6C6C69652077696E730A00  .byte 'O,'l,'l,'i,'e,32,'w,'i,'n,'s,10,0
+                        .area data(ram, con, rel)
+ 000C                   .dbfile 1514.c
+ 000C           L22:
+ 000C                   .blkb 11
+                        .area idata
+ 000C 5374616E2077696E730A00    .byte 'S,'t,'a,'n,32,'w,'i,'n,'s,10,0
+                        .area data(ram, con, rel)
+ 0017                   .dbfile 1514.c
+ 0017           L11:
+ 0017                   .blkb 5
+                        .area idata
+ 0017 2564256400        .byte 37,'d,37,'d,0
+                        .area data(ram, con, rel)
+ 001C                   .dbfile 1514.c
+ 001C           ; 
+ 001C           ; }

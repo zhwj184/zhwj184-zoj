@@ -1,0 +1,22 @@
+#include<stdio.h>
+main()
+{
+int n,i;
+    int x,y;
+ 
+  while((scanf("%d",&n))!=EOF)
+  {
+ 
+  for(i=0;i<n;i++)
+  {
+   scanf("%d%d",&x,&y);
+   if(x!=y&&x!=y+2)
+   printf("No Number\n");
+   else
+   {
+    if(x==y)
+    printf("%d\n",x+((x/2)*2));
+    else
+   printf("%d\n",x+(x/2)*2-2);   
+  }}
+}}

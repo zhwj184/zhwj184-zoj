@@ -1,0 +1,59 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+#define for if (0); else for
+/**
+ * Algo Desc:
+ *
+ * deduce all possible relationship with warshall algo
+ * and check with the original ones
+ */
+
+void run() {
+    int n;
+    cin >> n;
+    vector<vector<bool> > mat(26, vector<bool>(26, false));
+    for (int i = 0; i < n; ++i) {
+        char c1, c2, c3;
+        cin >> c1 >> c2 >> c3;
+        if (c2 == '>') {
+            swap(c1, c3);
+
+                       }
+        mat[c1 - 'A'][c3 - 'A'] = true;
+    }
+    vector<vector<bool> > mat2 = mat;
+    // run warshall
+    for (int k = 0; k < 26; ++k) {
+        for (int i = 0; i < 26; ++i) {
+            for (int j = 0; j < 26; ++j) {
+                if (mat2[i][k] && mat2[k][j]) {
+                    mat2[i][j] = true;
+                }
+            }
+        }
+    }
+    bool found = false;
+    for (int i = 0; i < 26; ++i) {
+        for (int j = 0; j < 26; ++j) {
+            if (mat2[i][j] && !mat[i][j]) {
+                cout << (char)('A' + i) << '<' << (char)('A' +
+ j) << endl;
+                found = true;
+            }
+        }
+   }
+    if (!found) {
+        cout << "NONE" << endl;
+    }
+}
+
+int main() {
+    int total;
+    cin >> total;
+    for (int now = 0; now < total; ++now) {
+        cout << "Case " << now + 1 << ':' << endl;
+        run();
+    }
+    return 0;
+}

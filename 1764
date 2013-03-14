@@ -1,0 +1,37 @@
+           #include <iostream>
+using namespace std;
+int main()
+{
+int n;
+int A[9],B[9];
+char ch[100][20];
+int i,j,k,m;
+cin >> k;
+m=0;
+n=0;
+int s,t,r;
+s=0;
+t=0;
+r=0;
+for(i=0;i<k;i++)
+{
+   m=0;
+   n=0;
+   cin >> ch[i];
+   for(j=0;j<4;j++)
+    cin >> A[j] >> B[j];
+   for(j=0;j<4;j++)
+   {
+    if(B[j]!=0)
+    {
+     m++;
+     n+=(A[j]-1)*20+B[j];
+    }
+   }
+   if(s<m){s=m;t=n;r=i;}
+   else if(s==m&&t>n){s=m;t=n;r=i;}
+}
+cout << ch[r] << " "<< s <<" " << t << endl;
+}
+
+

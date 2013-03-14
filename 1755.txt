@@ -1,0 +1,24 @@
+#include<stdio.h> 
+typedef struct student{ 
+int v; 
+char name[20]; 
+} stu; 
+int main(){ 
+
+stu xs[100]; 
+int min=1000,max=-1,x,y,z,i,n,mini,maxi; 
+while(1){ 
+scanf("%d",&n); 
+if(n==-1) break; 
+min=1000;
+max=-1;
+for(i=0;i<n;i++){ 
+scanf("%d%d%d%s",&x,&y,&z,xs[i].name); 
+xs[i].v=x*y*z; 
+if(min>xs[i].v) {min=xs[i].v; mini=i;} 
+if(max<xs[i].v) {max=xs[i].v; maxi=i;} 
+} 
+printf("%s took clay from %s.\n",xs[maxi].name,xs[mini].name); 
+} 
+return 0; 
+}

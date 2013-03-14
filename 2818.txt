@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<math.h>
+#include<iostream.h>
+int main()
+{
+    long   A,B,N;
+    while(cin>>B>>N)
+	{
+		if(B==0&&N==0)break;
+		A=pow(10,log10(B)/N);
+		if(B-pow(A,N)>pow((A+1),N)-B)
+			cout<<A+1<<endl;
+        else
+			cout<<A<<endl;
+	}
+	return 0;
+}

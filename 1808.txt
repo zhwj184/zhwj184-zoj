@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+int main()
+{
+ vector<string> chuan;
+ string ino;
+ int i,cnt=1;
+ bool sts = false;
+ while(cin >> ino)
+ {
+  if(ino=="9")
+  {
+   if(sts==false)
+    cout << "Set " << cnt << " is immediately decodable" <<
+ endl;
+   else
+    cout << "Set " << cnt << " is not immediately decodable" <<
+ endl;
+   chuan.clear();
+   cnt++;
+   sts = false;
+  }
+  else
+  {
+   if(sts==false)
+   {
+    for(i=0;i<chuan.size();++i)
+    {
+     if(ino.find(chuan[i])==0)
+     {
+      sts = true;
+      break;
+     }
+    }
+    chuan.push_back(ino);
+   }
+  }
+ }
+ return 0;
+}

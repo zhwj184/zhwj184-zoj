@@ -1,0 +1,36 @@
+#include <cstdio> 
+#include <cmath> 
+
+long n,a,b; 
+
+int main() 
+{ 
+   scanf("%ld",&a); 
+   while (!feof(stdin)) 
+   { 
+      scanf("%ld",&b); 
+      long N = b-a; 
+      if (N==0) 
+      { 
+         printf("0\n"); 
+      } 
+      else 
+      { 
+         if (N==3) 
+         { 
+            printf("3\n"); 
+         } 
+         else 
+         { 
+            long M = (int)sqrt(N); 
+            if (M*M == N) 
+               printf("%ld\n",M*2-1); 
+            else 
+               printf("%ld\n",M*2); 
+         } 
+      } 
+          
+      scanf("%ld",&a); 
+   } 
+   
+} 

@@ -1,0 +1,76 @@
+
+#include <iostream> 
+#include <fstream> 
+using namespace std; 
+
+struct Point 
+{ 
+   int x; 
+   int y; 
+   bool used; 
+}; 
+
+/* 
+??¨®¨²??¨°???POINT 
+¡ã¡ä??X¦Ì?¨¦yD¨°??¨¢D¡ê?¨¨?1?X?¨¤¦Ì¨¨¡ã¡ä??Y¦Ì?¨¦yD¨°??¨¢D 
+*/ 
+int cmp(const void *p1,const void *p2) 
+{ 
+   Point *p11=(Point *)p1, 
+        *p22=(Point *)p2; 
+   if(p11->x > p22->x) 
+      return 1; 
+   if(p11->x == p22->x) 
+      return p11->y-p22->y; 
+   return -1; 
+} 
+/* 
+?¨®¡ã¡ä??X¦Ì?¨¦yD¨° ?3D¨°2¨¦?¨°??¨°???POINT¡ê?¨º1¦Ì??a??POINT¦Ì?Y¡ä¨®¨®¨²?¡ã¨°???¦Ì?Y 
+¨º?3??a?¨´¦Ì?D¨°¨¢D¨®D???? 
+*/ 
+int main() 
+{ 
+//   ifstream inFile("1.txt"); 
+   int T,n; 
+   Point point[5000]; 
+   int i,y,ans; 
+   int x,left; 
+//   inFile>>T; 
+   cin>>T; 
+   while(T--) 
+   { 
+//      inFile>>n; 
+      cin>>n; 
+      for(i=0;i<n;i++) 
+      { 
+//         inFile>>point[i].x>>point[i].y; 
+         cin>>point[i].x>>point[i].y; 
+         point[i].used=false; 
+      } 
+       
+      qsort((void*)point,n,sizeof(struct Point),cmp);//qsort((void*)a,n,sizeof(struct aa),comp); 
+
+       
+      left=n;// 
+      ans=0; 
+      for(x=0;x<n;x++) 
+      { 
+         if(left==0) 
+            break; 
+         if(point[x].used==true) 
+            continue; 
+         y=point[x].y; 
+         point[x].used=true; 
+         for(i=x+1;i<n;i++) 
+            if(point[i].y>=y && point[i].used==false) 
+            { 
+               y=point[i].y; 
+               point[i].used=true; 
+               left--; 
+            } 
+         ans++; 
+      } 
+      cout<<ans<<endl; 
+   } 
+   return 0; 
+} 

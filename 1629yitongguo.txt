@@ -1,0 +1,70 @@
+假如原先边为n-1,则再加长一个单位时为   n.这时,单位为1的三角形多了   2*n-1   个,单位为2的多了   n-2+1   个,同理单位为3,4……的多了   n-3+1,n-4+1……   个。直到n-n+1。   
+    
+  就是一个递归过程，不过用递归会益处吧。   
+    
+  #include   <iostream.h>   
+  long   Sum(long   num)   
+  {   
+  long   n,sum=0;   
+  n=2;   
+  while(num-n>=0)   
+  {   
+sum=sum+(num-n)+n/2;     
+  n++;   
+  }   
+  //cout<<"Sum="<<sum<<endl;   
+  return   sum;   
+  }   
+    
+  int   main()   
+  {   
+  long   n,sum,s;   
+  while(cin>>n)   
+  {   
+  for(s=1,sum=0;s<=n;s++)   
+  {   
+  sum=sum+2*s-1+Sum(s);   
+  }   
+  cout<<sum<<endl;   
+  }   
+  return   0;   
+  }   
+    
+    
+Top
+
+10 楼whalefish2001（whale）回复于 2004-04-26 14:40:41 得分 5  
+  #include   <iostream.h>     
+  #include<conio.h>   
+    
+  //using   namespace   std;     
+    
+  int   main()     
+  {     
+    
+  int   i,num[2048];   
+                    //因为到2048溢出。   
+  num[0]=0;   
+  num[1]=1;   
+  num[2]=5;   
+  for(i=3;i<2048;i++)   
+  {   
+  if((i-long(i/10)*10)%2==1)   
+  num[i]=3*num[i-1]-3*num[i-2]+num[i-3]+1;   
+  else   
+  num[i]=3*num[i-1]-3*num[i-2]+num[i-3]+2;   
+  if   (i%10   ==   3)getch();   
+  cout<<i<<"     :     "<<num[i]<<endl;   
+  }   
+  /*   
+  int   n;   
+    
+  while(cin>>n)   
+  {   
+  cout<<num[n+1]<<endl;   
+  }   
+  */   
+    
+  return   0;   
+  }   
+    

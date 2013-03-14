@@ -1,0 +1,60 @@
+回复 全回 转寄 删除 上一封 下一封 返回 
+ 
+发件人： "" <05jzgjzwj@st.zju.edu.cn> 存入地址簿 阻止发信人 加入过滤器 
+收件人： 05jzgjzwj@st.zju.edu.cn 
+抄送：  
+邮件主题： 2814 
+发件日期： Fri, 23 Mar 2007 19:22:21 +0800 看信件原文   打印信件 
+ 
+来信内容: 选择内码:from:GBKGB2312BIG-5UTF-8  to:GBKBIG-5UTF-8
+ 
+ 
+
+
+#include <iostream.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+using namespace std;
+int main()
+{
+    char s[81];
+    char t[81][2];
+    int i,j,k,m,n;
+    while(cin >> s)
+    {
+        int flag=0;
+        if( strcmp (s,"*")==0)break;
+         int d;
+         d=strlen(s);
+
+         if(d==1||d==2)flag=0;
+         else
+        for( i=1;i<d;i++)
+        {
+
+         for(j=0;j+i<d;j++)
+           {
+               t[j][0]=s[j];
+               t[j][1]=s[j+i];
+            }
+        for(m=0;m<j-1;m++)
+         {
+
+             for(n=m+1;n<j;n++)
+
+             if(t[m][0]==t[n][0]&&t[m][1]==t[n][1])
+             {
+               flag=1;
+               break;
+             }
+             if(flag==1)break;
+         }
+         if(flag==1)break;
+        }
+        if(flag==1)cout << s << " is NOT surprising."<<endl;
+        else cout << s << " is surprising." <<endl;
+    }
+}
+
+ 

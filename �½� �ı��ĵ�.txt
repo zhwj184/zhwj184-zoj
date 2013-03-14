@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+#define MAXN 1000000
+bool flag[MAXN+1];//index is self number
+int sum(int n)
+{
+       int s = 0;
+       while (n){
+              s += n%10;
+              n /= 10;
+       }
+       return s;
+}
+void generate()
+{
+       int i;
+       memset(flag,false,sizeof(flag));
+       for (i=1; i<=MAXN; ++i) 
+              if (!flag[i]) {
+                     int n = i+sum(i);
+                     while (n<=MAXN && !flag[n]){
+                            flag[n] = true;
+                            n = n+sum(n);
+                     }
+              }
+       for (i=1; i<=MAXN; ++i)
+              if (!flag[i]) printf ("%d\n",i);
+}
+int main()
+{
+       generate();
+       return 0;
+}

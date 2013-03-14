@@ -1,0 +1,86 @@
+#include<iostream>
+#include<cstring>
+#include<cctype>
+using namespace std;
+struct word{
+    char str[7];
+    int num[27];
+ };
+ word words[101];
+ int main()
+ {
+    char test[10000][7];
+    int i,j,k,m,n;
+	int t[27];
+	int flag,count;
+	char res[100][7];
+	//while(cin >> words[0].str){
+	for(i=0;;i++)
+    {
+        cin >> words[i].str;
+        for(j=0;j<27;j++)
+        words[i].num[j]=0;
+        if(strcmp(words[i].str,"XXXXXX")==0)
+        {
+            k=i;
+            break;
+        }
+        m=strlen(words[i].str);
+        for(j=0;j<m;j++)
+        {
+            words[i].num[words[i].str[j]-'a']++;
+        }
+    }
+	for(i=0;;i++)
+	{
+		cin>> test[i];
+		if(strcmp(test[i],"XXXXXX")==0) break;
+		    for(j=0;j<27;j++)
+				t[j]=0;
+			count=0;
+			n=strlen(test[i]);
+			for(j=0;j<n;j++)
+				t[test[i][j]-'a']++;
+			for(int s=0;s<k;s++)
+			{
+				flag=1;
+				for(int w=0;w<27;w++)
+				{
+					if(t[w]!=words[s].num[w])
+					{
+						flag=0;
+						break;
+					}
+				}
+				if(flag) 
+				{
+					strcpy(res[count],words[s].str);
+					count++;
+
+					//cout << words[s].str << endl;
+				}
+			}
+			if(count==0) cout << "NOT A VALID WORD\n";
+			else {
+				for(int b=0;b<count-1;b++)
+					for(int c=b+1;c<count;c++)
+					{
+						if(strcmp(res[b],res[c])>0)
+						{
+							char temp[7];
+							strcpy(temp,res[b]);
+							strcpy(res[b],res[c]);
+							strcpy(res[c],temp);
+						}
+					}
+				for(int a=0;a<count;a++)
+					cout << res[a] << endl;
+			}
+			cout <<"******" << endl;
+	}
+	//}
+
+ }
+    
+
+    

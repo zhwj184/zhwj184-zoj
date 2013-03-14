@@ -1,0 +1,43 @@
+ 
+发件人： "" <05jzgjzwj@st.zju.edu.cn> 存入地址簿 阻止发信人 加入过滤器 
+收件人： 05jzgjzwj@st.zju.edu.cn 
+抄送：  
+邮件主题： 1489 
+发件日期： Thu, 07 Dec 2006 16:45:50 +0800 看信件原文   打印信件 
+ 
+来信内容: 选择内码:from:GBKGB2312BIG-5UTF-8  to:GBKBIG-5UTF-8
+ 
+ 
+
+
+已解决，明白了，#include <stdio.h>
+main()
+{
+    
+    long  input;
+    int output=0;
+    int i,d;
+ long  k;
+    while((scanf("%ld",&input))!=EOF)
+ {
+  output=0;
+  d=1;
+  k=1;
+  if(input%2==0)output=0;
+  else
+  {
+        for(i=1;i<10000;i++)
+  {
+         k=(2*k)%input;
+   if(k==1){output=i;break;}        
+        }
+  }
+
+    if(output)
+        printf("2^%d mod %d = 1\n",output,input);
+    else
+        printf("2^? mod %d = 1\n",input);
+    }
+}
+
+ 

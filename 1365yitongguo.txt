@@ -1,0 +1,31 @@
+#include<iostream> 
+using namespace std; 
+
+int main() 
+{ 
+    string From,To; 
+    char Case; 
+    double Dis,sum=0; 
+    while(cin>>From&&From!="#") 
+    { 
+        if(From=="0") 
+        { 
+            printf("%.0f\n",sum); 
+            sum=0; 
+            continue; 
+        }    
+        cin>>To>>Dis>>Case; 
+        if(Case=='F') 
+            sum+=Dis*2; 
+        if(Case=='B') 
+            sum+=1.5*Dis; 
+        if(Case=='Y') 
+        { 
+            if(Dis>=500) 
+                sum+=Dis; 
+            else 
+                sum+=500; 
+        }    
+    }    
+    return 0; 
+} 

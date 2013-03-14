@@ -1,0 +1,32 @@
+#include<iostream>
+#include<stdio.h>
+#include<string.h>
+using namespace std;
+main()
+{
+int n,m,number[10001],i,record,a,count[5000];
+while(scanf("%d%d",&n,&m)!=EOF)
+{
+ memset(count,0,sizeof(int)*m);
+record=0;
+    scanf("%d",&a);
+     number[0]=a%m;
+if(a%m==0)
+record++;
+ count[a%m]++;
+    for(i=1;i<n;i++)
+{
+  scanf("%d",&a);
+  number[i]=(a+number[i-1])%m;
+  if(number[i]==0)
+  record++;
+  count[number[i]]++;
+}
+for(i=0;i<m;i++)
+{
+  record+=count[i]*(count[i]-1)/2;
+}
+cout<<record<<endl;
+}
+
+}

@@ -1,0 +1,44 @@
+抄送：  
+邮件主题： 2256yitongguo 
+发件日期： Thu, 28 Dec 2006 08:17:43 +0800 看信件原文   打印信件 
+ 
+来信内容: 选择内码:from:GBKGB2312BIG-5UTF-8  to:GBKBIG-5UTF-8
+ 
+ 
+
+
+#include <stdio.h>
+
+int main()
+{
+   int n, sumi, last;
+   double sumf;
+   scanf("%d", &n);
+   while(n){
+      if(n <= 4)
+         printf("10\n");
+      else if(n <= 8){
+         sumi = 10 + (n - 4) * 2;
+         printf("%d\n", sumi);
+      }
+      else{
+         sumi = (n / 8) * 18;
+         last = n % 8;
+         if(last == 0)
+            printf("%d\n", sumi);
+         else if(last >= 5){
+            sumi = sumi + 10 + (last - 4) * 2;
+            printf("%d\n", sumi);
+         }
+         else{
+            sumf = sumi + last * 2.4;
+            printf("%.1f\n", sumf);
+         }
+      }
+      scanf("%d", &n);
+   }
+   return 0;
+}
+
+
+ 

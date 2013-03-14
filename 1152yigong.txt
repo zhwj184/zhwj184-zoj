@@ -1,0 +1,55 @@
+回复 全回 转寄 删除 上一封 下一封 返回 
+ 
+发件人： "" <05jzgjzwj@st.zju.edu.cn> 存入地址簿 阻止发信人 加入过滤器 
+收件人： 05jzgjzwj@st.zju.edu.cn 
+抄送：  
+邮件主题： 1152yitongguo 
+发件日期： Fri, 08 Dec 2006 19:06:45 +0800 看信件原文   打印信件 
+ 
+来信内容: 选择内码:from:GBKGB2312BIG-5UTF-8  to:GBKBIG-5UTF-8
+ 
+ 
+
+
+#include<stdio.h>
+main()
+{
+   int ca;
+   int m[100][1000],n[100][1000];
+   int A[100][1000];
+   int i,j,k[100],p,q;
+   float t;
+   scanf("%d",&ca);
+    for(j=0;j<ca;j++)
+     {
+       for(i=0;;i++)
+       {
+        A[j][i]=0;
+        scanf("%d%d",&n[j][i],&m[j][i]);
+        if(m[j][i]==0&&n[j][i]==0)
+        {
+            k[j]=i;
+            break;
+        }
+        for(p=2;p<n[j][i];p++)
+            for(q=1;q<p;q++)
+            {
+                t=(q*q+p*p+m[j][i])*1.0/(p*q);
+                if(t==(int)t)A[j][i]++;
+            }
+       }
+   }
+       for(j=0;j<ca;j++)
+       {
+       for(i=0;i<k[j];i++)
+       printf("Case %d: %d\n",i+1,A[j][i]);
+       if(j<(ca-1))printf("\n");
+       }
+
+
+}
+
+
+ 
+
+ 

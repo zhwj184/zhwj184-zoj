@@ -1,0 +1,19 @@
+#include<iostream> 
+#include<cstdlib> //Dev-C++??VC6???????????????? 
+#include<ctime> //Dev-C++???????????????? 
+using namespace std; 
+int main() 
+{ 
+  int d;
+  while(cin>>d)
+  {
+               while(d>18)
+               {
+                          d=(d-1)/18+1;
+               }
+               if(d=<9)cout<<"Stan wins."<<endl;
+               else cout<<"Ollie wins."<<endl;
+  }
+
+return 0; 
+} 

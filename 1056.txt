@@ -1,0 +1,141 @@
+#include <cstdio>
+#include <cstring>
+#include <iostream>
+using namespace std;
+int main()
+{
+	int posx[21],posy[21];
+	int curx,cury;
+	int step;
+	int i,j,k;
+	char s[101];
+	int n;
+	int flag,res;
+	while(cin >> n )
+	{
+		if(n==0) break;
+		cin >> s;
+		for(i=0;i<20;i++)
+		{
+			posx[i]=25;
+			posy[i]=11+i;
+		}
+		k=0;
+        curx=25;
+		cury=30;
+		flag=0;
+		res=0;
+		for(j=0;j<n;j++)
+		{
+			posx[k]=0;
+			posy[k]=0;
+			if(s[j]=='N')
+			{
+				if(curx-1<=0)
+				{
+					res=j;
+					flag=1;
+					break;
+				}
+				
+				for(int t=0;t<20;t++)
+				{
+					if(posx[t]==curx-1&&posy[t]==cury)
+					{
+						res=j;
+						flag=2;
+						break;
+					}
+				}	
+				//if(flag==2) break;
+				curx-=1;
+				posx[k]=curx;
+				posy[k]=cury;
+			
+				
+			}
+			else if(s[j]=='S')
+			{
+				if(curx+1>50)
+				{
+					res=j;
+					flag=1;
+					break;
+				}
+				
+				for(int t=0;t<20;t++)
+				{
+					if(posx[t]==curx+1&&posy[t]==cury)
+					{
+						res=j;
+						flag=2;
+						break;
+					}
+				}
+				//if(flag==2) break;
+				curx+=1;
+				posx[k]=curx;
+				posy[k]=cury;
+				
+			}
+			else if(s[j]=='W')
+			{
+				if(cury-1<=0)
+				{
+					res=j;
+					flag=1;
+					break;
+				}
+				
+				for(int t=0;t<20;t++)
+				{
+					if(posx[t]==curx&&posy[t]==cury-1)
+					{
+						res=j;
+						flag=2;
+						break;
+					}
+				}
+				//if(flag==2) break;
+				cury-=1;
+				posx[k]=curx;
+				posy[k]=cury;
+				
+			}
+			else if(s[j]=='E')
+			{
+				if(cury+1>50)
+				{
+					res=j;
+					flag=1;
+					break;
+				}
+				
+				for(int t=0;t<20;t++)
+				{
+					if(posx[t]==curx&&posy[t]==cury+1)
+					{
+						res=j;
+						flag=2;
+						break;
+					}
+				}
+				//if(flag==2) break;
+				cury+=1;
+				posx[k]=curx;
+				posy[k]=cury;
+				
+			}
+			k=(k+1)%20;
+			if(flag==2) break;
+		}
+		if(flag==1)printf("The worm ran off the board on move %d.\n",res+1);
+		if(flag==2)printf("The worm ran into itself on move %d.\n",res+1);
+		if(flag==0) printf("The worm successfully made all %d moves.\n",n);
+		}
+}
+	
+
+
+
+

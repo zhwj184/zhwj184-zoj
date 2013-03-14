@@ -1,0 +1,53 @@
+#include <cstdio>
+#include <cstring>
+#include <iostream>
+using namespace std;
+char sb[3],se[3];
+int dir[8][2]={{-2,-1},{-2,1},{-1,-2},{-1,2},{1,-2},{1,2},{2,-1},{2,1}};
+char a[3],b[3];
+void solute()
+{
+	int che[8][8];
+	int step=0;
+	int ox=a[0]-'a',oy=a[1]-'1',dx=b[0]-'a',dy=b[1]-'1';
+	int i,j,k,m,n,s,t;
+	for(i=0;i<8;i++)
+		for(j=0;j<8;j++)
+			che[i][j]=-1;
+	che[ox][oy]=0;
+	while(che[dx][dy]==-1)
+	{
+		for(i=0;i<8;i++)
+			for(j=0;j<8;j++)
+				if(che[i][j]==step)
+				{
+					for(m=0;m<8;m++)
+					{
+							s=i+dir[m][0];
+							t=j+dir[m][1];
+							if(s<8&&t>=0&&t<8&&t>=0)
+							{
+								if(che[s][t]==-1) che[s][t]=step+1;
+							}
+						}
+				}
+				step+=1;
+	}
+	  printf ("To get from %s to %s takes %d knight moves.\n",a,b,step);
+}
+int main()
+{
+	
+	
+#ifdef ONLINE_JUDGE
+#else 
+       freopen("1091.txt","r",stdin);
+#endif
+       while (scanf("%s %s",&a,&b)!=EOF)
+              solute();
+#ifdef ONLINE_JUDGE
+#else 
+       fclose(stdin);
+#endif
+       return 0;
+}

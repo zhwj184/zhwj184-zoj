@@ -1,0 +1,47 @@
+#include <iostream.h>
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+#include <ctype.h>
+using namespace std;
+int main()
+{
+	int t;
+	char s[6][6];
+	int i,j,k,m,n;
+	int A[6];
+	int B[6];
+	 string tmp;
+    float   C[6];
+	cin >> t;
+	getline(cin,tmp);
+	while(t--) {
+		for ( i=0;i<5;i++)
+			scanf("%s",s[i]);
+		memset(A,0,sizeof(A));
+		for( i=0;i<5;i++){
+			A[i]=((s[i][0]-'0')*10+(s[i][1]-'0'))%12;
+			B[i]=(s[i][3]-'0')*10+(s[i][4]-'0');
+			C[i]=abs((B[i]*6.0)/12+A[i]*30.0-B[i]*6);
+			
+			if(C[i]>180)C[i]=360-C[i];
+		}
+		for(i=0;i<5;i++)
+			for( j=3;j>=i;j--)
+				if(C[j+1]<C[j])
+				{
+					float w;
+				    char  x[6];
+					w=C[j+1];
+					C[j+1]=C[j];
+					C[j]=w;
+					strcpy(x,s[j+1]);
+					strcpy(s[j+1],s[j]);
+					strcpy(s[j],x);
+				}
+		
+			cout << s[2]<<endl;
+			
+	}
+}
+
